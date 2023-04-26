@@ -6,6 +6,7 @@ import { Button } from "~/component/Button";
 import { FormGroup } from "~/component/FormGroup";
 import { Input } from "~/component/Input";
 import { api } from "~/utils/api";
+import { Button } from "~/component/Button";
 
 const GeneratePage: NextPage = () => {
   const [form, setForm] = useState({
