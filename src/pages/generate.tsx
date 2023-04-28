@@ -6,15 +6,20 @@ import { FormGroup } from "~/component/FormGroup";
 import { Input } from "~/component/Input";
 import { api } from "~/utils/api";
 import { Button } from "~/component/Button";
+import Image from "next/image";
 
 const GeneratePage: NextPage = () => {
   const [form, setForm] = useState({
     prompt: "",
   });
 
+  const [imageUrl, setImageUrl] = useState("");
+
   const generateIcon = api.generate.generateIcon.useMutation({
     onSuccess(data) {
-      console.log("mutation finished", data);
+      console.log("mutation finished", data.imageUrl);
+      if (!data.imageUrl) return;
+      setImageUrl(data.imageUrl);
     },
   });
 
@@ -32,6 +37,7 @@ const GeneratePage: NextPage = () => {
     generateIcon.mutate({
       prompt: form.prompt,
     });
+    setForm({ prompt: "" });
   }
 
   const session = useSession();
@@ -73,6 +79,13 @@ const GeneratePage: NextPage = () => {
             submit
           </button>
         </form>
+
+        <Image
+          src={imageUrl}
+          width="200"
+          height="200"
+          alt="an imaged generate prompt"
+        />
       </main>
     </>
   );
