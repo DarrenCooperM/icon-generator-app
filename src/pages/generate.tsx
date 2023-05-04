@@ -1,5 +1,5 @@
 import { type NextPage } from "next";
-import { signIn, signOut, useSession } from "next-auth/react";
+import { useSession } from "next-auth/react";
 import Head from "next/head";
 import { useState } from "react";
 import { FormGroup } from "~/component/FormGroup";
@@ -55,15 +55,6 @@ const GeneratePage: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="flex min-h-screen flex-col items-center justify-center">
-        {!isLoggedIn && (
-          <Button
-            onClick={() => {
-              signIn().catch(console.error);
-            }}
-          >
-            Login
-          </Button>
-        )}
         {isLoggedIn && (
           <>
             <Button
@@ -72,13 +63,6 @@ const GeneratePage: NextPage = () => {
               }}
             >
               Buy Credits
-            </Button>
-            <Button
-              onClick={() => {
-                signOut().catch(console.error);
-              }}
-            >
-              Logout
             </Button>
           </>
         )}
