@@ -1,8 +1,10 @@
 import clsx from "clsx";
+import { Spinner } from "./Spinner";
 
 export function Button(
   props: React.ComponentPropsWithoutRef<"button"> & {
     variant?: "primary" | "secondary";
+    isLoading?: boolean;
   }
 ) {
   const color =
@@ -17,6 +19,7 @@ export function Button(
         color
       )}
     >
+      {props.isLoading && <Spinner />}
       {props.children}
     </button>
   );

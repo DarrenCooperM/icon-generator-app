@@ -30,7 +30,7 @@ async function generateIcon(prompt: string): Promise<string | undefined> {
         const response = await openai.createImage({
             prompt,
             n: 1,
-            size: "512x512",
+            size: "1024x1024",
             response_format: "b64_json"
           });
           return response.data.data[0]?.b64_json;
@@ -40,7 +40,8 @@ async function generateIcon(prompt: string): Promise<string | undefined> {
 export const generateRouter = createTRPCRouter({
     generateIcon: protectedProcedure.input(
         z.object({
-        prompt: z.string()
+        prompt: z.string(),
+        colour: z.string()
     })
     ).mutation(async({ctx, input}) => {
      const {count} =  await ctx.prisma.user.updateMany({
@@ -62,7 +63,10 @@ export const generateRouter = createTRPCRouter({
                 message: 'you do not have enough credits'
             })
         }
-          const base64EncodedImage = await generateIcon(input.prompt)
+
+        const finalPrompt = `a modern icon in ${input.colour} of a ${input.prompt}, minimialistic, high quality, trending on art station, unreal engine graphics quality, super HD`
+          
+        const base64EncodedImage = await generateIcon(finalPrompt)
 
           const icon = await ctx.prisma.icon.create({
             data: {
