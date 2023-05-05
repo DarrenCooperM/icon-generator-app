@@ -5,7 +5,7 @@ import { PrimaryLinkButton } from "~/component/PrimaryLinkButton";
 
 function HeroBanner() {
   return (
-    <section className="mt-24 grid grid-cols-2 gap-12 px-8">
+    <section className="mb-24 mt-12 grid grid-cols-1 gap-12 px-8 sm:mt-4 sm:grid-cols-2">
       <div className="flex flex-col gap-4">
         <h1 className="text-6xl ">Generate Icons with a click of a button</h1>
         <p className="text-2xl">
@@ -19,8 +19,8 @@ function HeroBanner() {
       <Image
         src="/icong.png"
         alt="icon generator image"
-        width="600"
-        height="600"
+        width="400"
+        height="300"
         className="order-first sm:-order-none"
       />
     </section>
