@@ -30,7 +30,7 @@ async function generateIcon(prompt: string): Promise<string | undefined> {
         const response = await openai.createImage({
             prompt,
             n: 1,
-            size: "1024x1024",
+            size: "512x512",
             response_format: "b64_json"
           });
           return response.data.data[0]?.b64_json;
