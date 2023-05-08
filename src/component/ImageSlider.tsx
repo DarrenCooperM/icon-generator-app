@@ -40,7 +40,7 @@ const ImageSlider: React.FC<ImageSliderProps> = ({
           <Image
             src={imgSrc}
             alt="Images used for slider"
-            className="layout-fill object-cover"
+            className="rounded-full"
             width="500"
             height="400"
           />
