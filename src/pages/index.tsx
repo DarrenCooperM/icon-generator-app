@@ -15,16 +15,16 @@ function HeroBanner() {
   ];
 
   return (
-    <section className="mb-24 mt-12 grid grid-cols-1 justify-center gap-24 px-8 sm:mt-24 sm:grid-cols-2">
+    <section className="mb-24 mt-12 grid grid-cols-1 gap-12 px-8 sm:mt-24 sm:grid-cols-2">
       <div className="flex flex-col gap-4">
         <h1 className="text-6xl font-bold ">
           Generate Icons with a click of a button
         </h1>
-        <p className="text-2xl">
+        <p className="mt-8 text-2xl">
           Use AI to generate icons in seconds instead of paying a designer and
           waiting for them to create them for you.
         </p>
-        <PrimaryLinkButton href="/generate" className="self-start">
+        <PrimaryLinkButton href="/generate" className="mt-12 self-start">
           Generated your Icons
         </PrimaryLinkButton>
       </div>

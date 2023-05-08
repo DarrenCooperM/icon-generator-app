@@ -3,6 +3,6 @@
 @tailwind utilities;
 
 body {
-  @apply bg-gray-100 dark:bg-gray-800;
+  @apply bg-black from-gray-700 via-gray-900 to-black px-4 dark:bg-gradient-to-r;
   @apply text-black dark:text-white;
 }
