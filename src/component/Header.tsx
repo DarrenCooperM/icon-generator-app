@@ -16,8 +16,8 @@ export function Header() {
 
   return (
     <header>
-      <div className="container mx-auto flex h-16 items-center justify-between border-b-2 border-gray-500 px-4">
-        <PrimaryLink href="/">Icon Generator</PrimaryLink>
+      <div className="mx-auto flex h-16 items-center justify-around gap-10 border-b-2 border-gray-500 px-4">
+        <PrimaryLink href="/">KIWIcon Generator</PrimaryLink>
         <ul className="flex gap-4">
           <li>
             <PrimaryLink href="/generate">Generate</PrimaryLink>
@@ -27,7 +27,9 @@ export function Header() {
           </li>
           {isLoggedIn && (
             <li>
-              <PrimaryLink href="/collection">Collection</PrimaryLink>
+              <PrimaryLink href="https://portfolio-darrencooperm.vercel.app">
+                Portfolio
+              </PrimaryLink>
             </li>
           )}
         </ul>
@@ -37,6 +39,7 @@ export function Header() {
               <div className="flex items-center">
                 Credits remaining {credits.data}
               </div>
+
               <li>
                 <Button
                   onClick={() => {
