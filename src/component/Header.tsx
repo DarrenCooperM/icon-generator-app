@@ -10,8 +10,8 @@ export function Header() {
   const { buyCredits } = useBuyCredits();
 
   return (
-    <header className="container mx-auto flex h-16 items-center justify-between px-4 dark:bg-gray-800">
-      <PrimaryLink href="/">Icon Generator</PrimaryLink>
+    <header className=" mx-auto flex h-16 items-center justify-evenly gap-40 border-b-2 px-4 dark:bg-gray-800">
+      <PrimaryLink href="/">KIWIcon Generator AI</PrimaryLink>
       <ul>
         <li>
           <PrimaryLink href="/generate">Generate</PrimaryLink>
