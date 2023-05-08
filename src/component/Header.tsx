@@ -1,58 +1,76 @@
-import Link from "next/link";
-import { PrimaryLink } from "./PrimaryLink";
 import { signIn, signOut, useSession } from "next-auth/react";
-import { Button } from "./Button";
 import { useBuyCredits } from "~/hooks/useBuyCredits";
+import { api } from "~/utils/api";
+import { Button } from "./Button";
+import { PrimaryLink } from "./PrimaryLink";
 
 export function Header() {
   const session = useSession();
-  const isLoggedIn = !!session.data;
   const { buyCredits } = useBuyCredits();
 
+  const isLoggedIn = !!session.data;
+
+  const credits = api.user.getCredits.useQuery(undefined, {
+    enabled: isLoggedIn,
+  });
+
   return (
-    <header className=" mx-auto flex h-16 items-center justify-evenly gap-40 border-b-2 px-4 dark:bg-gray-800">
-      <PrimaryLink href="/">KIWIcon Generator AI</PrimaryLink>
-      <ul>
-        <li>
-          <PrimaryLink href="/generate">Generate</PrimaryLink>
-        </li>
-      </ul>
-      <ul className="flex gap-4">
-        {isLoggedIn && (
-          <>
-            <li>
-              <Button
-                onClick={() => {
-                  buyCredits().catch(console.error);
-                }}
-              >
-                Buy Credits
-              </Button>
-            </li>
-            <li>
-              <Button
-                variant="secondary"
-                onClick={() => {
-                  signOut().catch(console.error);
-                }}
-              >
-                Logout
-              </Button>
-            </li>
-          </>
-        )}
-        {!isLoggedIn && (
+    <header>
+      <div className="container mx-auto flex h-16 items-center justify-between border-b-2 border-gray-500 px-4">
+        <PrimaryLink href="/">Icon Generator</PrimaryLink>
+        <ul className="flex gap-4">
           <li>
-            <Button
-              onClick={() => {
-                signIn().catch(console.error);
-              }}
-            >
-              Login
-            </Button>
+            <PrimaryLink href="/generate">Generate</PrimaryLink>
           </li>
-        )}
-      </ul>
+          <li>
+            <PrimaryLink href="/community">Community</PrimaryLink>
+          </li>
+          {isLoggedIn && (
+            <li>
+              <PrimaryLink href="/collection">Collection</PrimaryLink>
+            </li>
+          )}
+        </ul>
+        <ul className="flex gap-4">
+          {isLoggedIn && (
+            <>
+              <div className="flex items-center">
+                Credits remaining {credits.data}
+              </div>
+              <li>
+                <Button
+                  onClick={() => {
+                    buyCredits().catch(console.error);
+                  }}
+                >
+                  Buy Credits
+                </Button>
+              </li>
+              <li>
+                <Button
+                  variant="secondary"
+                  onClick={() => {
+                    signOut().catch(console.error);
+                  }}
+                >
+                  Logout
+                </Button>
+              </li>
+            </>
+          )}
+          {!isLoggedIn && (
+            <li>
+              <Button
+                onClick={() => {
+                  signIn().catch(console.error);
+                }}
+              >
+                Login
+              </Button>
+            </li>
+          )}
+        </ul>
+      </div>
     </header>
   );
 }
