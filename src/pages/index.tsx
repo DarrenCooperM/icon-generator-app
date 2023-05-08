@@ -1,13 +1,25 @@
 import { type NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
+import ImageSlider from "~/component/ImageSlider";
 import { PrimaryLinkButton } from "~/component/PrimaryLinkButton";
 
 function HeroBanner() {
+  const images = [
+    "/netflix.jpg",
+    "/insta.jpg",
+    "/tiktok.jpg",
+    "/twitter.jpg",
+    "/tesla.jpg",
+    "/youtube.jpg",
+  ];
+
   return (
-    <section className="mb-24 mt-12 grid grid-cols-1 gap-12 px-8 sm:mt-4 sm:grid-cols-2">
+    <section className="mb-24 mt-12 grid grid-cols-1 justify-center gap-24 px-8 sm:mt-24 sm:grid-cols-2">
       <div className="flex flex-col gap-4">
-        <h1 className="text-6xl ">Generate Icons with a click of a button</h1>
+        <h1 className="text-6xl font-bold ">
+          Generate Icons with a click of a button
+        </h1>
         <p className="text-2xl">
           Use AI to generate icons in seconds instead of paying a designer and
           waiting for them to create them for you.
@@ -16,13 +28,7 @@ function HeroBanner() {
           Generated your Icons
         </PrimaryLinkButton>
       </div>
-      <Image
-        src="/icong.png"
-        alt="icon generator image"
-        width="400"
-        height="300"
-        className="order-first sm:-order-none"
-      />
+      <ImageSlider images={images} />
     </section>
   );
 }
