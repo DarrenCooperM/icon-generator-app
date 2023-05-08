@@ -1,8 +1,8 @@
 import { TRPCError } from "@trpc/server";
-import {  z } from "zod";
+import { z } from "zod";
 
 import {
-  createTRPCRouter, protectedProcedure, publicProcedure,} from "~/server/api/trpc";
+  createTRPCRouter, protectedProcedure} from "~/server/api/trpc";
   import { Configuration, OpenAIApi } from "openai";
 import { env } from "~/env.mjs";
 import { b64Image } from "~/data/b64Image";

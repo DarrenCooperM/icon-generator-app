@@ -20,7 +20,9 @@ function HeroBanner() {
     <section className="mb-24 mt-24 grid grid-cols-1 gap-12 px-8 sm:mt-40 sm:grid-cols-2">
       <div className="flex flex-col gap-4">
         <h1 className="text-2xl font-bold ">
-          {sessionData && <span>"Kia Ora {sessionData.user?.name}!"</span>}
+          {sessionData && (
+            <span>&quot;Kia Ora {sessionData.user?.name}!&quot;</span>
+          )}
         </h1>
         <h1 className="text-6xl font-bold ">
           Generate Icons with a click of a button
