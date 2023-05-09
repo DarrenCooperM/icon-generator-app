@@ -43,7 +43,7 @@ export function Header() {
           {isLoggedIn && (
             <>
               <div className="flex items-center">
-                Credits remaining {credits.data || <Spinner />}
+                Credits remaining {credits.data}
               </div>
 
               <li>
