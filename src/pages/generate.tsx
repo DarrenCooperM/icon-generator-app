@@ -7,7 +7,7 @@ import { FormGroup } from "~/component/FormGroup";
 import { Input } from "~/component/Input";
 import { api } from "~/utils/api";
 
-const colors = [
+const colours = [
   "blue",
   "red",
   "pink",
@@ -24,13 +24,13 @@ const styles = [
   "claymorphic",
   "3d rendered",
   "pixelated",
-  "illustrated with color pencil",
+  "illustrated with colour pencil",
 ];
 
 const GeneratePage: NextPage = () => {
   const [form, setForm] = useState({
     prompt: "",
-    color: "",
+    colour: "",
     shape: "",
     style: "",
     numberOfIcons: "1",
@@ -90,18 +90,18 @@ const GeneratePage: NextPage = () => {
             ></Input>
           </FormGroup>
 
-          <h2 className="text-xl">2. Pick your icon color.</h2>
+          <h2 className="text-xl">2. Pick your icon colour.</h2>
           <FormGroup className="mb-12 grid grid-cols-4">
-            {colors.map((color) => (
-              <label key={color} className="flex gap-2 text-2xl">
+            {colours.map((colour) => (
+              <label key={colour} className="flex gap-2 text-2xl">
                 <input
                   required
                   type="radio"
-                  name="color"
-                  checked={color === form.color}
-                  onChange={() => setForm((prev) => ({ ...prev, color }))}
+                  name="colour"
+                  checked={colour === form.colour}
+                  onChange={() => setForm((prev) => ({ ...prev, colour }))}
                 ></input>
-                {color}
+                {colour}
               </label>
             ))}
           </FormGroup>
