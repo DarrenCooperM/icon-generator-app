@@ -3,6 +3,7 @@ import { useBuyCredits } from "~/hooks/useBuyCredits";
 import { api } from "~/utils/api";
 import { Button } from "./Button";
 import { PrimaryLink } from "./PrimaryLink";
+import { Spinner } from "./Spinner";
 
 export function Header() {
   const session = useSession();
@@ -37,7 +38,7 @@ export function Header() {
           {isLoggedIn && (
             <>
               <div className="flex items-center">
-                Credits remaining {credits.data}
+                Credits remaining {credits.data || <Spinner />}
               </div>
 
               <li>
