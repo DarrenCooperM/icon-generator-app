@@ -27,11 +27,16 @@ export function Header() {
             <PrimaryLink href="/community">Community</PrimaryLink>
           </li>
           {isLoggedIn && (
-            <li>
-              <PrimaryLink href="https://portfolio-darrencooperm.vercel.app">
-                Portfolio
-              </PrimaryLink>
-            </li>
+            <>
+              <li>
+                <PrimaryLink href="/collection">Collection</PrimaryLink>
+              </li>
+              <li>
+                <PrimaryLink href="https://portfolio.maoriwebdev.com">
+                  Portfolio
+                </PrimaryLink>
+              </li>
+            </>
           )}
         </ul>
         <ul className="flex gap-4">
