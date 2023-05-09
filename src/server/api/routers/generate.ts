@@ -11,11 +11,11 @@ const s3 = new AWS.S3({
   credentials: {
     accessKeyId: env.ACCESS_KEY_ID,
     secretAccessKey: env.SECRET_ACCESS_KEY,
-  },
-  region: "us-east-1",
-});
+},
+region: "us-east-1"
+})
 
-const BUCKET_NAME = "icon-generator-course";
+const BUCKET_NAME = "icon-generator-dalle-api"
 
 const configuration = new Configuration({
   apiKey: env.DALLE_API_KEY,
