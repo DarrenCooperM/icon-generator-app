@@ -3,6 +3,7 @@ import { useSession } from "next-auth/react";
 import Head from "next/head";
 import ImageSlider from "~/component/ImageSlider";
 import { PrimaryLinkButton } from "~/component/PrimaryLinkButton";
+import { Spinner } from "~/component/Spinner";
 
 function HeroBanner() {
   const { data: sessionData } = useSession();
@@ -21,7 +22,9 @@ function HeroBanner() {
       <div className="flex flex-col gap-4">
         <h1 className="text-2xl font-bold ">
           {sessionData && (
-            <span>&quot;Kia Ora {sessionData.user?.name}!&quot;</span>
+            <span>
+              &quot;Kia Ora {sessionData.user?.name || <Spinner />}!&quot;
+            </span>
           )}
         </h1>
         <h1 className="text-6xl font-bold ">
@@ -35,7 +38,7 @@ function HeroBanner() {
           Generated your Icons
         </PrimaryLinkButton>
       </div>
-      <ImageSlider images={images} />
+      <ImageSlider images={images || <Spinner />} />
     </section>
   );
 }
