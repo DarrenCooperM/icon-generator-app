@@ -15,7 +15,7 @@ const s3 = new AWS.S3({
   region: "us-east-1",
 });
 
-const BUCKET_NAME = "icon-generator-dalle-api";
+const BUCKET_NAME = "icon-generator-course";
 
 const configuration = new Configuration({
   apiKey: env.DALLE_API_KEY,
@@ -99,10 +99,11 @@ export const generateRouter = createTRPCRouter({
 
       return createdIcons.map((icon) => {
         return { 
-            imageUrl: `https://${BUCKET_NAME}.s3.ap-southeast-2.amazonaws.com/${icon.id}`,
-          }
+          imageUrl: `https://${BUCKET_NAME}.s3.ap-southeast-2.amazonaws.com/${icon.id}`,
+        }
       });
     }),
 });
-    
+  
+ 
  
