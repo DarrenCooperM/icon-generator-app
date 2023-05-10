@@ -10,21 +10,44 @@ import { api } from "~/utils/api";
 const colours = [
   "blue",
   "red",
-  "pink",
-  "green",
   "orange",
+  "purple",
   "yellow",
-  "white",
+  "pink",
+  "blue",
+  "green",
+  "teal",
+  "grey",
   "black",
+  "light green",
 ];
 
 const shapes = ["square", "circle", "rounded"];
 
 const styles = [
-  "claymorphic",
-  "3d rendered",
+  "metallic",
+  "polygon",
   "pixelated",
-  "illustrated with colour pencil",
+  "clay",
+  "gradient",
+  "flat",
+  "illustrated",
+  "minimalistic",
+  "hand-drawn",
+  "watercolor",
+  "isometric",
+  "neon",
+  "cartoonish",
+  "3D",
+  "pop-art",
+  "doodle",
+  "grunge",
+  "sticket",
+  "realistic",
+  "mosaic",
+  "origami",
+  "chalkboard",
+  "woodcut",
 ];
 
 const GeneratePage: NextPage = () => {
@@ -82,8 +105,8 @@ const GeneratePage: NextPage = () => {
             1. Describe what your want your icon to look like.
           </h2>
           <FormGroup className="mb-12">
-            <label>Prompt</label>
             <Input
+              placeholder="e.g. A happy horse"
               required
               value={form.prompt}
               onChange={updateForm("prompt")}
@@ -160,7 +183,7 @@ const GeneratePage: NextPage = () => {
             isLoading={generateIcon.isLoading}
             disabled={generateIcon.isLoading}
           >
-            Submit
+            Generate
           </Button>
         </form>
 
