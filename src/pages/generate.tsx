@@ -6,6 +6,8 @@ import { Button } from "~/component/Button";
 import { FormGroup } from "~/component/FormGroup";
 import { Input } from "~/component/Input";
 import { api } from "~/utils/api";
+import { downloadImage } from "../component/ImageDownloader";
+import { FiDownload } from "react-icons/fi";
 
 const colours = [
   "blue",
@@ -192,14 +194,26 @@ const GeneratePage: NextPage = () => {
             <h2 className="text-xl">Your Icons</h2>
             <section className="mb-12 grid grid-cols-4 gap-4">
               {imagesUrl.map(({ imageUrl }) => (
-                <Image
-                  key={imageUrl}
-                  src={imageUrl}
-                  alt="an image of your generated prompt"
-                  width="512"
-                  height="512"
-                  className="w-full"
-                />
+                <div key={imageUrl}>
+                  <div className="image-container relative">
+                    <Image
+                      src={imageUrl}
+                      alt="an image of your generated prompt"
+                      width="512"
+                      height="512"
+                      className="w-full rounded-xl"
+                    />
+                    <FiDownload
+                      onClick={() =>
+                        downloadImage(
+                          imageUrl,
+                          imageUrl.split("/").pop() ?? "random.jpg"
+                        )
+                      }
+                      className="absolute right-0 top-0 cursor-pointer text-3xl hover:text-black"
+                    />
+                  </div>
+                </div>
               ))}
             </section>
           </>
