@@ -32,15 +32,17 @@ const CollectionPage: NextPage = () => {
                 />
                 <FiDownload
                   className="absolute right-0 top-0 cursor-pointer text-3xl hover:text-black"
-                  onClick={() =>
-                    downloadImage(
-                      `https://icon-generator-dalle-api.s3.ap-southeast-2.amazonaws.com/${icon.id}`,
-                      `${icon.id}.jpg`
-                    )
-                  }
-                >
-                  Download
-                </FiDownload>
+                  onClick={async () => {
+                    try {
+                      await downloadImage(
+                        `https://icon-generator-dalle-api.s3.ap-southeast-2.amazonaws.com/${icon.id}`,
+                        `${icon.id}.jpg`
+                      );
+                    } catch (error) {
+                      console.error(error);
+                    }
+                  }}
+                ></FiDownload>
               </div>
             </li>
           ))}
