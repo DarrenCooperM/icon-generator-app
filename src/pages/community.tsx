@@ -2,7 +2,6 @@ import { type Icon } from "@prisma/client";
 import { type NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
-import { Button } from "~/component/Button";
 import { api } from "~/utils/api";
 import { downloadImage } from "../component/ImageDownloader";
 import { FiDownload } from "react-icons/fi";
