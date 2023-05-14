@@ -204,12 +204,16 @@ const GeneratePage: NextPage = () => {
                       className="w-full rounded-xl"
                     />
                     <FiDownload
-                      onClick={() =>
-                        downloadImage(
-                          imageUrl,
-                          imageUrl.split("/").pop() ?? "random.jpg"
-                        )
-                      }
+                      onClick={async () => {
+                        try {
+                          await downloadImage(
+                            imageUrl,
+                            imageUrl.split("/").pop() ?? "random.jpg"
+                          );
+                        } catch (error) {
+                          console.error(error);
+                        }
+                      }}
                       className="absolute right-0 top-0 cursor-pointer text-3xl hover:text-black"
                     />
                   </div>
