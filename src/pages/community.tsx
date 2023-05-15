@@ -41,9 +41,7 @@ const CommunityPage: NextPage = () => {
                       (error) => console.error(error)
                     );
                   }}
-                >
-                  Download
-                </FiDownload>
+                />
               </div>
             </li>
           ))}
