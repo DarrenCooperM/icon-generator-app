@@ -8,6 +8,15 @@ import { FiDownload } from "react-icons/fi";
 const CommunityPage: NextPage = () => {
   const icons = api.icons.getCommunityIcons.useQuery();
 
+  function handleDownload(icon: Icon) {
+    const link = document.createElement("a");
+    link.href = `https://icon-generator-dalle-api.s3.ap-southeast-2.amazonaws.com/${icon.id}`;
+    link.download = `${icon.id}.jpg`; // or any other filename you want
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  }
+
   return (
     <>
       <Head>
@@ -29,7 +38,10 @@ const CommunityPage: NextPage = () => {
                   alt={icon.prompt ?? "an image of an icon"}
                   src={`https://icon-generator-dalle-api.s3.ap-southeast-2.amazonaws.com/${icon.id}`}
                 />
-                <FiDownload className="absolute right-0 top-0 cursor-pointer text-3xl hover:text-black" />
+                <FiDownload
+                  className="absolute right-0 top-0 cursor-pointer text-3xl hover:text-black"
+                  onClick={() => handleDownload(icon)}
+                />
               </div>
             </li>
           ))}
