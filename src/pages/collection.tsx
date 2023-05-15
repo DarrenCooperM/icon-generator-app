@@ -3,7 +3,6 @@ import { type NextPage } from "next";
 import Head from "next/head";
 import Image from "next/image";
 import { api } from "~/utils/api";
-import { downloadImage } from "../component/ImageDownloader";
 import { FiDownload } from "react-icons/fi";
 
 const CollectionPage: NextPage = () => {
@@ -30,18 +29,7 @@ const CollectionPage: NextPage = () => {
                   alt={icon.prompt ?? "an image of an icon"}
                   src={`https://icon-generator-dalle-api.s3.ap-southeast-2.amazonaws.com/${icon.id}`}
                 />
-                <FiDownload
-                  className="absolute right-0 top-0 cursor-pointer text-3xl hover:text-black"
-                  onClick={() => {
-                    downloadImage(
-                      `https://icon-generator-dalle-api.s3.ap-southeast-2.amazonaws.com/${icon.id}`,
-                      `${icon.id}.jpg`
-                    ).then(
-                      () => {},
-                      (error) => console.error(error)
-                    );
-                  }}
-                />
+                <FiDownload className="absolute right-0 top-0 cursor-pointer text-3xl hover:text-black" />
               </div>
             </li>
           ))}

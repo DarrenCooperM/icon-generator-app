@@ -6,7 +6,6 @@ import { Button } from "~/component/Button";
 import { FormGroup } from "~/component/FormGroup";
 import { Input } from "~/component/Input";
 import { api } from "~/utils/api";
-import { downloadImage } from "../component/ImageDownloader";
 import { FiDownload } from "react-icons/fi";
 
 const colours = [
@@ -88,6 +87,15 @@ const GeneratePage: NextPage = () => {
         [key]: e.target.value,
       }));
     };
+  }
+
+  function handleDownload(imageUrl: string) {
+    const link = document.createElement("a");
+    link.href = imageUrl;
+    link.download = "image.jpg";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   }
 
   return (
@@ -204,17 +212,8 @@ const GeneratePage: NextPage = () => {
                       className="w-full rounded-xl"
                     />
                     <FiDownload
-                      onClick={async () => {
-                        try {
-                          await downloadImage(
-                            imageUrl,
-                            imageUrl.split("/").pop() ?? "random.jpg"
-                          );
-                        } catch (error) {
-                          console.error(error);
-                        }
-                      }}
                       className="absolute right-0 top-0 cursor-pointer text-3xl hover:text-black"
+                      onClick={() => handleDownload(imageUrl)}
                     />
                   </div>
                 </div>
