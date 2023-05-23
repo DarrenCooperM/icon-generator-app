@@ -56,19 +56,47 @@ export function Header() {
             isOpen ? "translate-x-0" : "-translate-x-full"
           } lg:static lg:z-0 lg:flex lg:w-auto lg:transform-none lg:space-x-4 lg:bg-transparent lg:text-black`}
         >
-          <ul className="flex flex-col gap-4 space-y-4 lg:flex-row lg:space-y-0">
-            <li onClick={() => setIsOpen(false)}>
+          <ul className=" flex flex-col gap-4 space-y-4 px-4 pt-4 lg:flex-row lg:space-y-0">
+            <li
+              onClick={() => setIsOpen(false)}
+              className={
+                isOpen
+                  ? `border-b-2 border-gray-800 py-2 dark:border-b-2 dark:border-white`
+                  : ""
+              }
+            >
               <PrimaryLink href="/generate">Generate</PrimaryLink>
             </li>
-            <li onClick={() => setIsOpen(false)}>
+            <li
+              onClick={() => setIsOpen(false)}
+              className={
+                isOpen
+                  ? `border-b-2 border-gray-800 py-2 dark:border-b-2 dark:border-white`
+                  : ""
+              }
+            >
               <PrimaryLink href="/community">Community</PrimaryLink>
             </li>
             {isLoggedIn && (
               <>
-                <li onClick={() => setIsOpen(false)}>
+                <li
+                  onClick={() => setIsOpen(false)}
+                  className={
+                    isOpen
+                      ? `border-b-2 border-gray-800 py-2 dark:border-b-2 dark:border-white`
+                      : ""
+                  }
+                >
                   <PrimaryLink href="/collection">Collection</PrimaryLink>
                 </li>
-                <li onClick={() => setIsOpen(false)}>
+                <li
+                  onClick={() => setIsOpen(false)}
+                  className={
+                    isOpen
+                      ? `border-b-2 border-gray-800 py-2 dark:border-b-2 dark:border-white`
+                      : ""
+                  }
+                >
                   <PrimaryLink href="https://portfolio.maoriwebdev.com">
                     Portfolio
                   </PrimaryLink>
@@ -76,7 +104,7 @@ export function Header() {
               </>
             )}
           </ul>
-          <ul className="flex flex-col gap-4 space-y-4 lg:flex-row lg:space-y-0">
+          <ul className="flex flex-col gap-4 space-y-4 px-4 pt-4 lg:flex-row lg:space-y-0">
             {isLoggedIn && (
               <>
                 <div className="flex items-center">
@@ -105,7 +133,7 @@ export function Header() {
               </>
             )}
             {!isLoggedIn && (
-              <li onClick={() => setIsOpen(false)}>
+              <li onClick={() => setIsOpen(false)} className="pt-4">
                 <Button
                   onClick={() => {
                     signIn().catch(console.error);
