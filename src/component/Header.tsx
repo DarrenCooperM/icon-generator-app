@@ -52,7 +52,7 @@ export function Header() {
         )}
 
         <div
-          className={`fixed left-0 top-0 z-20 h-full w-64 transform items-center bg-black text-white transition-transform duration-200 ${
+          className={`fixed left-0 top-0 z-20 h-full w-64 transform items-center bg-gray-300 text-black transition-transform duration-200 dark:bg-black dark:text-white ${
             isOpen ? "translate-x-0" : "-translate-x-full"
           } lg:static lg:z-0 lg:flex lg:w-auto lg:transform-none lg:space-x-4 lg:bg-transparent lg:text-black`}
         >
