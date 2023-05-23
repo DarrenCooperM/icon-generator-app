@@ -5,6 +5,7 @@ import { Button } from "./Button";
 import { PrimaryLink } from "./PrimaryLink";
 import { Spinner } from "./Spinner";
 import { useState } from "react";
+import Image from "next/image";
 
 export function Header() {
   const session = useSession();
@@ -21,7 +22,15 @@ export function Header() {
   return (
     <header>
       <div className="mx-auto flex h-16 items-center justify-between gap-10 border-b-2 border-gray-500 px-4 capitalize max-lg:flex max-lg:justify-between sm:flex sm:justify-between lg:flex lg:justify-around">
-        <PrimaryLink href="/">Icon Generator</PrimaryLink>
+        <PrimaryLink href="/">
+          <Image
+            src="/maori.jpg"
+            alt="Description of image"
+            width="50"
+            height="50"
+            className="rounded-full"
+          />
+        </PrimaryLink>
 
         <button
           onClick={() => setIsOpen(!isOpen)}
@@ -95,7 +104,7 @@ export function Header() {
                 >
                   <PrimaryLink href="/collection">Collection</PrimaryLink>
                 </li>
-                <li
+                {/* <li
                   onClick={() => setIsOpen(false)}
                   className={
                     isOpen
@@ -106,7 +115,7 @@ export function Header() {
                   <PrimaryLink href="https://portfolio.maoriwebdev.com">
                     Portfolio
                   </PrimaryLink>
-                </li>
+                </li> */}
               </>
             )}
           </ul>
@@ -119,10 +128,6 @@ export function Header() {
           >
             {isLoggedIn && (
               <>
-                <div className="flex items-center">
-                  Credits remaining {credits.data || <Spinner />}
-                </div>
-
                 <li onClick={() => setIsOpen(false)}>
                   <Button
                     onClick={() => {
@@ -142,6 +147,10 @@ export function Header() {
                     Logout
                   </Button>
                 </li>
+                <div className="flex items-center font-medium text-blue-400">
+                  Credits remaining:&nbsp;
+                  <span>{credits.data || <Spinner />}</span>
+                </div>
               </>
             )}
             {!isLoggedIn && (
