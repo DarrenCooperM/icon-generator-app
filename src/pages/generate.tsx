@@ -15,7 +15,6 @@ const colours = [
   "purple",
   "yellow",
   "pink",
-  "blue",
   "green",
   "teal",
   "grey",
@@ -111,7 +110,7 @@ const GeneratePage: NextPage = () => {
           Fill out the form below to start generating your icons.
         </p>
         <form className="flex flex-col gap-4" onSubmit={handleFormSubmit}>
-          <h2 className="text-xl">
+          <h2 className="text-2xl underline">
             1. Describe what your want your icon to look like.
           </h2>
           <FormGroup className="mb-12">
@@ -123,10 +122,13 @@ const GeneratePage: NextPage = () => {
             ></Input>
           </FormGroup>
 
-          <h2 className="text-xl">2. Pick your icon colour.</h2>
-          <FormGroup className="mb-12 grid grid-cols-4">
+          <h2 className="text-2xl underline">2. Pick your icon colour.</h2>
+          <FormGroup className="mb-12 flex flex-col gap-4 sm:grid sm:grid-cols-2 md:grid md:grid-cols-4">
             {colours.map((colour) => (
-              <label key={colour} className="flex gap-2 text-2xl">
+              <label
+                key={colour}
+                className=" flex items-center gap-2 text-2xl sm:text-xl md:mb-0 md:text-xl"
+              >
                 <input
                   required
                   type="radio"
@@ -139,10 +141,13 @@ const GeneratePage: NextPage = () => {
             ))}
           </FormGroup>
 
-          <h2 className="text-xl">3. Pick your icon shape.</h2>
-          <FormGroup className="mb-12 grid grid-cols-4">
+          <h2 className="text-2xl underline">3. Pick your icon shape.</h2>
+          <FormGroup className="mb-12 flex flex-col gap-4 sm:grid sm:grid-cols-2 md:grid md:grid-cols-4">
             {shapes.map((shape) => (
-              <label key={shape} className="flex gap-2 text-2xl">
+              <label
+                key={shape}
+                className=" flex items-center gap-2 text-2xl sm:text-xl md:mb-0 md:text-xl"
+              >
                 <input
                   required
                   type="radio"
@@ -155,17 +160,20 @@ const GeneratePage: NextPage = () => {
             ))}
           </FormGroup>
 
-          <h2 className="text-xl">4. Pick your icon style.</h2>
-          <FormGroup className="mb-12 grid grid-cols-4">
+          <h2 className="text-2xl underline">4. Pick your icon style.</h2>
+          <FormGroup className="mb-12 flex flex-col gap-4 sm:grid sm:grid-cols-2 md:grid md:grid-cols-4">
             {styles.map((style) => (
-              <label key={style} className="flex gap-2 text-2xl">
+              <label
+                key={style}
+                className=" flex items-center gap-2 text-2xl sm:text-xl md:mb-0 md:text-xl"
+              >
                 <input
                   required
                   type="radio"
                   name="style"
                   checked={style === form.style}
                   onChange={() => setForm((prev) => ({ ...prev, style }))}
-                ></input>
+                />
                 {style}
               </label>
             ))}
@@ -200,19 +208,19 @@ const GeneratePage: NextPage = () => {
         {imagesUrl.length > 0 && (
           <>
             <h2 className="text-xl">Your Icons</h2>
-            <section className="mb-12 grid grid-cols-4 gap-4">
+            <section className="mb-12 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
               {imagesUrl.map(({ imageUrl }) => (
                 <div key={imageUrl}>
-                  <div className="image-container relative">
+                  <div className="relative">
                     <Image
                       src={imageUrl}
                       alt="an image of your generated prompt"
-                      width="512"
-                      height="512"
+                      width="1024"
+                      height="1024"
                       className="w-full rounded-xl"
                     />
                     <FiDownload
-                      className="absolute right-0 top-0 cursor-pointer text-3xl hover:text-black"
+                      className="absolute right-0 top-0 cursor-pointer text-3xl text-white hover:text-black dark:text-white dark:hover:text-black"
                       onClick={() => handleDownload(imageUrl)}
                     />
                   </div>
