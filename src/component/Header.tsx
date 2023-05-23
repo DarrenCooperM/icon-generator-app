@@ -147,7 +147,7 @@ export function Header() {
                     Logout
                   </Button>
                 </li>
-                <div className="flex items-center font-medium text-blue-400">
+                <div className="flex items-center font-medium text-blue-800">
                   Credits remaining:&nbsp;
                   <span>{credits.data || <Spinner />}</span>
                 </div>
