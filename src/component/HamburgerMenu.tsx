@@ -40,12 +40,16 @@ export function HamburgerMenu({ isOpen, setIsOpen }: HamburgerMenuProps) {
               : `flex flex-col gap-4 space-y-4 lg:flex-row lg:space-y-0`
           }
         >
-          <div
-            className="absolute right-0 top-0 mr-4 mt-4 cursor-pointer"
-            onClick={() => setIsOpen(false)}
-          >
-            X
-          </div>
+          {isOpen && (
+            <>
+              <div
+                className="absolute right-0 top-0 mr-4 mt-4 cursor-pointer"
+                onClick={() => setIsOpen(false)}
+              >
+                X
+              </div>
+            </>
+          )}
           <li
             onClick={() => setIsOpen(false)}
             className={
