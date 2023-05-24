@@ -40,6 +40,7 @@ export const generateRouter = createTRPCRouter({
   generateIcon: protectedProcedure
     .input(
       z.object({
+        company: z.string(),
         prompt: z.string(),
         colour: z.string(),
         shape: z.string(),
@@ -69,7 +70,7 @@ export const generateRouter = createTRPCRouter({
         });
       }
 
-      const finalPrompt = `a modern ${input.shape} icon in ${input.colour} of ${input.prompt}, ${input.style}, minimialistic, high quality, trending on art station, unreal engine graphics quality`;
+      const finalPrompt = `Design a ${input.prompt} logo for a ${input.company} companys with the colour ${input.colour} and ${input.style} style with a shape of ${input.shape}, minimialistic, high quality, trending on art station, unreal engine graphics quality`;
 
       const base64EncodedImages = await generateIcon(
         finalPrompt,

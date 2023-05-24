@@ -20,12 +20,12 @@ const CommunityPage: NextPage = () => {
   return (
     <>
       <Head>
-        <title>Community Icons</title>
+        <title>Community Logos</title>
         <meta name="description" content="Community Icons" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="container mx-auto mt-24 flex min-h-screen flex-col gap-4 px-8">
-        <h1 className="text-4xl">Community Icons</h1>
+        <h1 className="text-4xl">Community Logos</h1>
 
         <ul className="grid grid-cols-2 gap-4 sm:grid-cols-4 md:grid-cols-6">
           {icons.data?.map((icon: Icon) => (
