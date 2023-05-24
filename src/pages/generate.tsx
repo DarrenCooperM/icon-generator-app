@@ -53,6 +53,7 @@ const styles = [
 const GeneratePage: NextPage = () => {
   const [form, setForm] = useState({
     prompt: "",
+    company: "",
     colour: "",
     shape: "",
     style: "",
@@ -110,19 +111,29 @@ const GeneratePage: NextPage = () => {
           Fill out the form below to start generating your icons.
         </p>
         <form className="flex flex-col gap-4" onSubmit={handleFormSubmit}>
-          <h2 className="text-2xl underline">
-            1. Describe what your want your icon to look like.
+          <h2 className="text-2xl ">1. What business is your industry in?</h2>
+          <FormGroup className="mb-12">
+            <Input
+              placeholder="e.g. Technology, Telecommunications"
+              required
+              value={form.company}
+              onChange={updateForm("company")}
+            ></Input>
+          </FormGroup>
+
+          <h2 className="text-2xl ">
+            2. Describe what your want your logo to look like.
           </h2>
           <FormGroup className="mb-12">
             <Input
-              placeholder="e.g. A happy horse"
+              placeholder="e.g. a single letter or a rainbow"
               required
               value={form.prompt}
               onChange={updateForm("prompt")}
             ></Input>
           </FormGroup>
 
-          <h2 className="text-2xl underline">2. Pick your icon colour.</h2>
+          <h2 className="text-2xl ">4. Pick your logo colour.</h2>
           <FormGroup className="mb-12 flex flex-col gap-4 sm:grid sm:grid-cols-2 md:grid md:grid-cols-4">
             {colours.map((colour) => (
               <label
@@ -141,7 +152,7 @@ const GeneratePage: NextPage = () => {
             ))}
           </FormGroup>
 
-          <h2 className="text-2xl underline">3. Pick your icon shape.</h2>
+          <h2 className="text-2xl ">5. Pick your logo shape.</h2>
           <FormGroup className="mb-12 flex flex-col gap-4 sm:grid sm:grid-cols-2 md:grid md:grid-cols-4">
             {shapes.map((shape) => (
               <label
@@ -160,7 +171,7 @@ const GeneratePage: NextPage = () => {
             ))}
           </FormGroup>
 
-          <h2 className="text-2xl underline">4. Pick your icon style.</h2>
+          <h2 className="text-2xl ">6. Pick your logo style.</h2>
           <FormGroup className="mb-12 flex flex-col gap-4 sm:grid sm:grid-cols-2 md:grid md:grid-cols-4">
             {styles.map((style) => (
               <label
