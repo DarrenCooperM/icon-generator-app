@@ -8,7 +8,11 @@ export function Header() {
 
   return (
     <header
-      className={`${!isOpen ? "sticky top-0 z-50 bg-gray-200 shadow-md" : ""}`}
+      className={`${
+        !isOpen
+          ? "sticky top-0 z-50 bg-gray-200 shadow-md dark:bg-gray-800"
+          : ""
+      }`}
     >
       <div className="mx-auto flex h-16 items-center justify-between gap-10 border-b-2 border-gray-500 px-4 capitalize max-lg:flex max-lg:justify-between sm:flex sm:justify-between lg:flex lg:justify-around">
         <PrimaryLink href="/">

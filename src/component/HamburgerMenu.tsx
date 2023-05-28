@@ -31,7 +31,7 @@ export function HamburgerMenu({ isOpen, setIsOpen }: HamburgerMenuProps) {
       <div
         className={`fixed left-0 top-0 z-20 h-full w-full transform items-center bg-gray-300 text-black transition-transform duration-200 dark:bg-black dark:text-white ${
           isOpen ? "translate-x-0" : "-translate-x-full"
-        } lg:static lg:z-0 lg:flex lg:w-auto lg:transform-none lg:space-x-4 lg:bg-transparent lg:text-black`}
+        } lg:static lg:z-0 lg:flex lg:w-auto lg:transform-none lg:space-x-4 lg:bg-transparent`}
       >
         <ul
           className={
