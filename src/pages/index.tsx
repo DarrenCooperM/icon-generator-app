@@ -34,7 +34,7 @@ function HeroBanner() {
             Generated your logo now!
           </PrimaryLinkButton>
         </div>
-        <div className="ml-4 grid items-center md:m-0 xl:ml-0">
+        <div className="ml-4 grid items-center md:m-0 xl:ml-0 xl:items-start">
           <ImageSlider images={images} />
         </div>
       </section>
