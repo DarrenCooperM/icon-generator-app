@@ -4,6 +4,7 @@ import { api } from "~/utils/api";
 import { Button } from "./Button";
 import { PrimaryLink } from "./PrimaryLink";
 import { Spinner } from "./Spinner";
+import { AiOutlineClose } from "react-icons/Ai";
 
 interface HamburgerMenuProps {
   isOpen: boolean;
@@ -23,13 +24,13 @@ export function HamburgerMenu({ isOpen, setIsOpen }: HamburgerMenuProps) {
     <>
       {isOpen && (
         <div
-          className="fixed left-0 top-0 z-10 h-full w-full bg-black bg-opacity-50"
+          className="fixed left-0 top-0 z-10 h-full w-full bg-black bg-opacity-50 lg:absolute"
           onClick={() => setIsOpen(false)}
         ></div>
       )}
 
       <div
-        className={`fixed left-0 top-0 z-20 h-full w-full transform items-center bg-gray-300 text-black transition-transform duration-200 dark:bg-black dark:text-white ${
+        className={`fixed left-0 top-0 z-20 h-full w-full transform items-center bg-gray-300 text-black transition-transform duration-200 dark:bg-black dark:text-white lg:absolute ${
           isOpen ? "translate-x-0" : "-translate-x-full"
         } lg:static lg:z-0 lg:flex lg:w-auto lg:transform-none lg:space-x-4 lg:bg-transparent`}
       >
@@ -37,36 +38,28 @@ export function HamburgerMenu({ isOpen, setIsOpen }: HamburgerMenuProps) {
           className={
             isOpen
               ? `flex w-full flex-col items-center gap-4 space-y-4 px-4 pt-4 text-xl lg:flex-row lg:space-y-0`
-              : `flex flex-col gap-4 space-y-4 lg:flex-row lg:space-y-0`
+              : `hidden`
           }
         >
           {isOpen && (
             <>
               <div
-                className="absolute right-0 top-0 mr-4 mt-4 cursor-pointer"
-                onClick={() => setIsOpen(false)}
+                className="absolute right-0 top-0 z-20 mr-4 mt-4 block h-6 w-6"
+                onClick={() => setIsOpen(!isOpen)}
               >
-                X
+                <AiOutlineClose className="text-2xl" />
               </div>
             </>
           )}
           <li
             onClick={() => setIsOpen(false)}
-            className={
-              isOpen
-                ? `border-b-2 border-gray-800 py-2 dark:border-b-2 dark:border-white`
-                : ""
-            }
+            className="border-b-2 border-gray-800 py-2 dark:border-b-2 dark:border-white"
           >
             <PrimaryLink href="/generate">Generate</PrimaryLink>
           </li>
           <li
             onClick={() => setIsOpen(false)}
-            className={
-              isOpen
-                ? `border-b-2 border-gray-800 py-2 dark:border-b-2 dark:border-white`
-                : ""
-            }
+            className="border-b-2 border-gray-800 py-2 dark:border-b-2 dark:border-white"
           >
             <PrimaryLink href="/community">Community</PrimaryLink>
           </li>
@@ -74,21 +67,13 @@ export function HamburgerMenu({ isOpen, setIsOpen }: HamburgerMenuProps) {
             <>
               <li
                 onClick={() => setIsOpen(false)}
-                className={
-                  isOpen
-                    ? `border-b-2 border-gray-800 py-2 dark:border-b-2 dark:border-white`
-                    : ""
-                }
+                className="border-b-2 border-gray-800 py-2 dark:border-b-2 dark:border-white"
               >
                 <PrimaryLink href="/collection">Collection</PrimaryLink>
               </li>
               <li
                 onClick={() => setIsOpen(false)}
-                className={
-                  isOpen
-                    ? `border-b-2 border-gray-800 py-2 dark:border-b-2 dark:border-white`
-                    : ""
-                }
+                className="dark:border-white`= border-b-2 border-gray-800 py-2 dark:border-b-2"
               >
                 <PrimaryLink href="https://portfolio.maoriwebdev.com">
                   MaoriWebDev
@@ -101,7 +86,7 @@ export function HamburgerMenu({ isOpen, setIsOpen }: HamburgerMenuProps) {
           className={
             isOpen
               ? `mt-4 flex flex-col items-center gap-4 space-y-4 px-4 pt-4 lg:flex-row lg:space-y-0`
-              : `flex flex-col gap-4 space-y-4 lg:flex-row lg:space-y-0`
+              : `hidden`
           }
         >
           {isLoggedIn && (
