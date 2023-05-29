@@ -4,7 +4,7 @@ import { api } from "~/utils/api";
 import { Button } from "./Button";
 import { PrimaryLink } from "./PrimaryLink";
 import { Spinner } from "./Spinner";
-import { RiCloseLine } from "@react-icons/all-files/Ri/RiCloseLine";
+import { RiCloseLine } from "@react-icons/all-files/ri/RiCloseLine";
 
 interface HamburgerMenuProps {
   isOpen: boolean;

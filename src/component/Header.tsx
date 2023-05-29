@@ -7,7 +7,7 @@ import { signIn, signOut, useSession } from "next-auth/react";
 import { useBuyCredits } from "~/hooks/useBuyCredits";
 import { api } from "~/utils/api";
 import { Spinner } from "./Spinner";
-import { RiMenu3Line } from "@react-icons/all-files/Ri/RiMenu3Line";
+import { RiMenu3Line } from "@react-icons/all-files/ri/RiMenu3Line";
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
