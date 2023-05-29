@@ -4,7 +4,7 @@ import { api } from "~/utils/api";
 import { Button } from "./Button";
 import { PrimaryLink } from "./PrimaryLink";
 import { Spinner } from "./Spinner";
-import { AiOutlineClose } from "react-icons/Ai";
+import { RiCloseLine } from "react-icons/Ri";
 
 interface HamburgerMenuProps {
   isOpen: boolean;
@@ -47,7 +47,7 @@ export function HamburgerMenu({ isOpen, setIsOpen }: HamburgerMenuProps) {
                 className="absolute right-0 top-0 z-20 mr-4 mt-4 block h-6 w-6"
                 onClick={() => setIsOpen(!isOpen)}
               >
-                <AiOutlineClose className="text-2xl" />
+                <RiCloseLine className="text-3xl" />
               </div>
             </>
           )}
