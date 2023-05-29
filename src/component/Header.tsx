@@ -75,7 +75,7 @@ export function Header() {
                       : ""
                   }
                 >
-                  <PrimaryLink href="https://portfolio.maoriwebdev.com">
+                  <PrimaryLink href="https://maoriwebdev.com">
                     MaoriWebDev
                   </PrimaryLink>
                 </li>

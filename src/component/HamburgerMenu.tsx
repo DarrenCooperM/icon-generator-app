@@ -75,7 +75,7 @@ export function HamburgerMenu({ isOpen, setIsOpen }: HamburgerMenuProps) {
                 onClick={() => setIsOpen(false)}
                 className="dark:border-white`= border-b-2 border-gray-800 py-2 dark:border-b-2"
               >
-                <PrimaryLink href="https://portfolio.maoriwebdev.com">
+                <PrimaryLink href="https://maoriwebdev.com">
                   MaoriWebDev
                 </PrimaryLink>
               </li>
