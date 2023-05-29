@@ -14,11 +14,11 @@ export function Header() {
           : ""
       }`}
     >
-      <div className="mx-auto flex h-16 items-center justify-between gap-10 border-b-2 border-gray-500 px-4 capitalize max-lg:flex max-lg:justify-between sm:flex sm:justify-between lg:flex lg:justify-around">
+      <div className="mx-auto flex h-16 items-center gap-10 border-b-2 border-gray-500 px-4 capitalize max-lg:flex max-lg:justify-between sm:flex sm:justify-between lg:flex lg:justify-around">
         <PrimaryLink href="/">
           <Image
             src="/maori.jpg"
-            alt="Description of image"
+            alt="icon"
             width="50"
             height="50"
             className="rounded-full"
