@@ -253,7 +253,7 @@ const GeneratePage: NextPage = () => {
         {imagesUrl.length > 0 && (
           <>
             <h2 className="text-xl">Your Logos</h2>
-            <section className="mb-12 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
+            <section className="mb-12 grid grid-cols-1 gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5">
               {imagesUrl.map(({ imageUrl }) => (
                 <div key={imageUrl}>
                   <div className="relative">

@@ -35,6 +35,7 @@ const CollectionPage: NextPage = () => {
                   className="w-full rounded-lg"
                   width="100"
                   height="100"
+                  quality={100}
                   alt={icon.prompt ?? "an image of an icon"}
                   src={`https://icon-generator-dalle-api.s3.ap-southeast-2.amazonaws.com/${icon.id}`}
                 />
