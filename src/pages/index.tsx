@@ -21,7 +21,7 @@ function HeroBanner() {
 
   return (
     <>
-      <section className="mb-24 mt-12 grid grid-cols-1 gap-12 px-8 text-center lg:mt-24 lg:grid lg:grid-cols-2 lg:text-left">
+      <section className="mb-24 mt-12 grid grid-cols-1 gap-12 px-8 text-center md:gap-40 lg:mt-24 lg:grid lg:grid-cols-2 lg:text-left">
         <div className="flex flex-col gap-4">
           <h1 className="text-xl font-bold lg:text-2xl ">
             {sessionData && <span>Kia Ora {sessionData.user?.name}!</span>}
@@ -37,12 +37,12 @@ function HeroBanner() {
             Generated your logo now!
           </PrimaryLinkButton>
         </div>
-        <div className=" grid items-center md:m-0 xl:ml-48 xl:items-start">
+        <div className=" grid items-center md:m-0 xl:ml-12 xl:items-start">
           {/* <ImageSlider images={images} /> */}
           <Image
             src={image}
-            width={1000}
-            height={1000}
+            width={600}
+            height={600}
             quality={100}
             alt="logo Image"
             className="flex items-center justify-center rounded-lg shadow-2xl"

@@ -7,35 +7,15 @@ import { FormGroup } from "~/component/FormGroup";
 import { Input } from "~/component/Input";
 import { api } from "~/utils/api";
 import { FiDownload } from "react-icons/fi";
-
-const colours = [
-  "blue",
-  "red",
-  "orange",
-  "purple",
-  "yellow",
-  "pink",
-  "green",
-  "teal",
-  "grey",
-  "black",
-  "light green",
-];
-
-const shapes = ["square", "circle", "rounded"];
-
-const styles = [
-  "minimalistic",
-  "flat",
-  "gradient",
-  "metallic",
-  "3D",
-  "realistic",
-  "polygon",
-  "isometric",
-  "illustrated",
-  "watercolor",
-];
+import { Company } from "~/component/GenerateInputs/Company";
+import { Business } from "~/component/GenerateInputs/Business";
+import { Colour } from "~/component/GenerateInputs/Colour";
+import { Shape } from "~/component/GenerateInputs/Shape";
+import { Logo } from "~/component/GenerateInputs/Logo";
+import { AbstractLiteral } from "~/component/GenerateInputs/AbstractLiteral";
+import { Imagery } from "~/component/GenerateInputs/Imagery";
+import { Theme } from "~/component/GenerateInputs/Theme";
+import { NumberOfLogos } from "~/component/GenerateInputs/NumberOfLogos";
 
 const GeneratePage: NextPage = () => {
   const [form, setForm] = useState({
@@ -101,141 +81,15 @@ const GeneratePage: NextPage = () => {
           Fill out the form below to start generating your logos.
         </p>
         <form className="flex flex-col gap-4" onSubmit={handleFormSubmit}>
-          <h2 className=" text-xl lg:text-2xl">
-            1. What is the name of your company?
-          </h2>
-          <FormGroup className="mb-12">
-            <Input
-              placeholder="e.g. Acme Corp"
-              required
-              value={form.company}
-              onChange={updateForm("company")}
-            ></Input>
-          </FormGroup>
-
-          <h2 className=" text-xl lg:text-2xl">
-            2. Describe your business or industry.
-          </h2>
-          <FormGroup className="mb-12">
-            <Input
-              placeholder="e.g. Technology, Telecommunications"
-              required
-              value={form.prompt}
-              onChange={updateForm("prompt")}
-            ></Input>
-          </FormGroup>
-
-          <h2 className=" text-xl lg:text-2xl">
-            3. Pick a primary color for your logo.
-          </h2>
-          <FormGroup className="mb-12 grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
-            {colours.map((colour) => (
-              <label
-                key={colour}
-                className="flex items-center gap-2  text-xl sm:text-xl md:mb-0 md:text-xl lg:text-2xl"
-              >
-                <input
-                  required
-                  type="radio"
-                  name="colour"
-                  checked={colour === form.colour}
-                  onChange={() => setForm((prev) => ({ ...prev, colour }))}
-                ></input>
-                {colour}
-              </label>
-            ))}
-          </FormGroup>
-
-          <h2 className=" text-xl lg:text-2xl">
-            4. Pick a shape for your logo.
-          </h2>
-          <FormGroup className="mb-12 flex flex-col gap-4 sm:grid sm:grid-cols-2 md:grid md:grid-cols-4">
-            {shapes.map((shape) => (
-              <label
-                key={shape}
-                className="flex items-center gap-2  text-xl sm:text-xl md:mb-0 md:text-xl lg:text-2xl"
-              >
-                <input
-                  required
-                  type="radio"
-                  name="shape"
-                  checked={shape === form.shape}
-                  onChange={() => setForm((prev) => ({ ...prev, shape }))}
-                ></input>
-                {shape}
-              </label>
-            ))}
-          </FormGroup>
-
-          <h2 className=" text-xl lg:text-2xl">
-            5. Pick a style for your logo.
-          </h2>
-          <FormGroup className="mb-12 grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
-            {styles.map((style) => (
-              <label
-                key={style}
-                className="flex items-center gap-2  text-xl sm:text-xl md:mb-0 md:text-xl lg:text-2xl"
-              >
-                <input
-                  required
-                  type="radio"
-                  name="style"
-                  checked={style === form.style}
-                  onChange={() => setForm((prev) => ({ ...prev, style }))}
-                />
-                {style}
-              </label>
-            ))}
-          </FormGroup>
-
-          <h2 className=" text-xl lg:text-2xl">
-            6. Do you want your logo to be more abstract or literal?
-          </h2>
-          <FormGroup className="mb-12">
-            <Input
-              placeholder="e.g. Abstract"
-              required
-              value={form.abstractLiteral}
-              onChange={updateForm("abstractLiteral")}
-            ></Input>
-          </FormGroup>
-
-          <h2 className=" text-xl lg:text-2xl">
-            7. Provide any specific imagery you want in your logo.
-          </h2>
-          <FormGroup className="mb-12">
-            <Input
-              placeholder="e.g. Trees, mountains, ocean"
-              value={form.imagery}
-              onChange={updateForm("imagery")}
-            ></Input>
-          </FormGroup>
-
-          <h2 className=" text-xl lg:text-2xl">
-            8. What mood or theme do you want your logo to convey?
-          </h2>
-          <FormGroup className="mb-12">
-            <Input
-              placeholder="e.g. Modern, retro, luxurious, playful"
-              required
-              value={form.mood}
-              onChange={updateForm("mood")}
-            ></Input>
-          </FormGroup>
-
-          <h2 className=" text-xl lg:text-2xl">
-            9. How many logos do you want?
-          </h2>
-          <FormGroup className="mb-12">
-            <label>Number of logos</label>
-            <Input
-              inputMode="numeric"
-              pattern="[1-9]|10"
-              value={form.numberOfIcons}
-              required
-              onChange={updateForm("numberOfIcons")}
-            ></Input>
-          </FormGroup>
+          <Company updateForm={updateForm} form={form} />
+          <Business updateForm={updateForm} form={form} />
+          <Colour form={form} setForm={setForm} />
+          <Shape form={form} setForm={setForm} />
+          <Logo form={form} setForm={setForm} />
+          <AbstractLiteral updateForm={updateForm} form={form} />
+          <Imagery updateForm={updateForm} form={form} />
+          <Theme updateForm={updateForm} form={form} />
+          <NumberOfLogos updateForm={updateForm} form={form} />
 
           {error && (
             <div className="rounded bg-red-500 p-8 text-xl text-white">
