@@ -18,9 +18,9 @@ function HeroBanner() {
 
   return (
     <>
-      <section className="mb-24 mt-24 grid grid-cols-1 gap-12 px-8 text-center lg:grid lg:grid-cols-2 lg:text-left">
+      <section className="mb-24 mt-12 grid grid-cols-1 gap-12 px-8 text-center lg:mt-24 lg:grid lg:grid-cols-2 lg:text-left">
         <div className="flex flex-col gap-4">
-          <h1 className="text-2xl font-bold ">
+          <h1 className="text-xl font-bold lg:text-2xl ">
             {sessionData && <span>Kia Ora {sessionData.user?.name}!</span>}
           </h1>
           <h1 className="text-4xl font-bold lg:text-6xl ">

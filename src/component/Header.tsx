@@ -7,6 +7,7 @@ import { signIn, signOut, useSession } from "next-auth/react";
 import { useBuyCredits } from "~/hooks/useBuyCredits";
 import { api } from "~/utils/api";
 import { Spinner } from "./Spinner";
+import { RiMenu3Line } from "react-icons/Ri";
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -126,9 +127,9 @@ export function Header() {
 
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="relative z-20 block h-6 w-6 lg:absolute lg:hidden"
+          className="relative z-20 block  lg:absolute lg:hidden"
         >
-          <div
+          {/* <div
             className={`absolute left-1/2 h-0.5 w-8 -translate-x-1/2 transform rounded-full bg-white transition-transform duration-200 ease-in-out ${
               isOpen ? "top-1/2 rotate-45" : "top-1"
             }`}
@@ -142,7 +143,10 @@ export function Header() {
             className={`absolute left-1/2 h-0.5 w-8 -translate-x-1/2 transform rounded-full bg-white transition-transform duration-200 ease-in-out ${
               isOpen ? "top-1/2 -rotate-45" : "top-4"
             }`}
-          ></div>
+          >
+            
+          </div> */}
+          <RiMenu3Line className="text-3xl" />
         </button>
 
         <HamburgerMenu isOpen={isOpen} setIsOpen={setIsOpen} />
