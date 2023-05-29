@@ -18,19 +18,19 @@ function HeroBanner() {
 
   return (
     <>
-      <section className="mb-24 mt-12 grid grid-cols-1 gap-12 px-8 sm:mt-24 sm:grid-cols-2">
+      <section className="mb-24 mt-24 grid grid-cols-1 gap-12 px-8 text-center lg:grid lg:grid-cols-2 lg:text-left">
         <div className="flex flex-col gap-4">
           <h1 className="text-2xl font-bold ">
             {sessionData && <span>Kia Ora {sessionData.user?.name}!</span>}
           </h1>
-          <h1 className="text-6xl font-bold ">
+          <h1 className="text-4xl font-bold lg:text-6xl ">
             Generate Logos for your business at the click of a button
           </h1>
-          <p className="mt-8 text-2xl">
+          <p className="mt-8 text-xl lg:text-2xl">
             Use AI to generate logos in seconds instead of paying a designer and
             waiting for them to create them for you.
           </p>
-          <PrimaryLinkButton href="/generate" className="mt-12 self-start">
+          <PrimaryLinkButton href="/generate" className="mt-12 xl:self-start">
             Generated your logo now!
           </PrimaryLinkButton>
         </div>
