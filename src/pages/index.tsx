@@ -1,20 +1,23 @@
 import { type NextPage } from "next";
 import { useSession } from "next-auth/react";
 import Head from "next/head";
-import ImageSlider from "~/component/ImageSlider";
+import Image from "next/image";
+// import ImageSlider from "~/component/ImageSlider";
 import { PrimaryLinkButton } from "~/component/PrimaryLinkButton";
 
 function HeroBanner() {
   const { data: sessionData } = useSession();
 
-  const images = [
-    "/horse.jpg",
-    "/horse1.jpg",
-    "/horse2.jpg",
-    "/horse3.jpg",
-    "/horse4.jpg",
-    "/horse5.jpg",
-  ];
+  // const images = [
+  //   "/horse.jpg",
+  //   "/horse1.jpg",
+  //   "/horse2.jpg",
+  //   "/horse3.jpg",
+  //   "/horse4.jpg",
+  //   "/horse5.jpg",
+  // ];
+
+  const image = "/logos.jpg";
 
   return (
     <>
@@ -34,8 +37,16 @@ function HeroBanner() {
             Generated your logo now!
           </PrimaryLinkButton>
         </div>
-        <div className="ml-4 grid items-center md:m-0 xl:ml-0 xl:items-start">
-          <ImageSlider images={images} />
+        <div className=" grid items-center md:m-0 xl:ml-48 xl:items-start">
+          {/* <ImageSlider images={images} /> */}
+          <Image
+            src={image}
+            width={1000}
+            height={1000}
+            quality={100}
+            alt="logo Image"
+            className="flex items-center justify-center rounded-lg shadow-2xl"
+          />
         </div>
       </section>
     </>
