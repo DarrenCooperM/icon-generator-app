@@ -1,5 +1,5 @@
 import { PrimaryLink } from "./PrimaryLink";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
 import { HamburgerMenu } from "./HamburgerMenu";
 import { Button } from "./Button";
@@ -11,14 +11,42 @@ import { RiMenu3Line } from "@react-icons/all-files/ri/RiMenu3Line";
 
 export function Header() {
   const [isOpen, setIsOpen] = useState(false);
+  const [dropdown, setDropdown] = useState(false);
   const session = useSession();
+  const { data: sessionData } = useSession();
   const { buyCredits } = useBuyCredits();
 
+  const dropdownRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
+        setDropdown(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+
+  const handleDrop = (event: React.MouseEvent) => {
+    event.stopPropagation();
+    setDropdown(!dropdown);
+  };
+
   const isLoggedIn = !!session.data;
+
+  const blankProfileImg = "/blankProfileImg.jpg";
 
   const credits = api.user.getCredits.useQuery(undefined, {
     enabled: isLoggedIn,
   });
+
   return (
     <header
       className={`${
@@ -39,21 +67,10 @@ export function Header() {
             />
           </PrimaryLink>
           <ul className="hidden flex-col gap-4 space-y-4 lg:flex lg:flex-row lg:space-y-0 xl:flex xl:items-center xl:gap-10">
-            {isOpen && (
-              <>
-                <div
-                  className="absolute right-0 top-0 mr-4 mt-4 cursor-pointer"
-                  onClick={() => setIsOpen(false)}
-                >
-                  X
-                </div>
-              </>
-            )}
-            <li onClick={() => setIsOpen(false)}>
+            <li>
               <PrimaryLink href="/generate">Generate</PrimaryLink>
             </li>
             <li
-              onClick={() => setIsOpen(false)}
               className={
                 isOpen
                   ? `border-b-2 border-gray-800 py-2 dark:border-b-2 dark:border-white`
@@ -64,11 +81,10 @@ export function Header() {
             </li>
             {isLoggedIn && (
               <>
-                <li onClick={() => setIsOpen(false)}>
+                <li>
                   <PrimaryLink href="/collection">Collection</PrimaryLink>
                 </li>
                 <li
-                  onClick={() => setIsOpen(false)}
                   className={
                     isOpen
                       ? `border-b-2 border-gray-800 py-2 dark:border-b-2 dark:border-white`
@@ -85,36 +101,72 @@ export function Header() {
           <ul className="hidden flex-col gap-4 space-y-4 lg:flex lg:flex-row lg:space-y-0 xl:flex xl:items-center">
             {isLoggedIn && (
               <>
-                <li onClick={() => setIsOpen(false)}>
-                  <Button
-                    onClick={() => {
-                      buyCredits().catch(console.error);
-                    }}
-                  >
-                    Buy Credits
-                  </Button>
-                </li>
-                <li onClick={() => setIsOpen(false)}>
-                  <Button
-                    variant="secondary"
-                    onClick={() => {
-                      signOut().catch(console.error);
-                    }}
-                  >
-                    Logout
-                  </Button>
-                </li>
-                <div className="flex items-center font-medium text-blue-800">
-                  Credits remaining:&nbsp;
-                  <span>{credits.data || <Spinner />}</span>
+                <div className="flex items-center text-sm ">
+                  <span>{credits.data || <Spinner />}</span>&nbsp;Credits left
+                </div>
+                <div>
+                  <li>
+                    {sessionData?.user?.image && (
+                      <Image
+                        src={sessionData.user.image || blankProfileImg}
+                        width={50}
+                        height={50}
+                        alt="profileimg"
+                        className="relative cursor-pointer rounded-full"
+                        onClick={handleDrop}
+                      />
+                    )}
+                  </li>
+                  {dropdown ? (
+                    <div
+                      ref={dropdownRef}
+                      className="absolute w-fit divide-gray-100 rounded-lg bg-white shadow dark:bg-gray-700"
+                    >
+                      <ul className="py-2 text-sm text-gray-700 dark:text-gray-200">
+                        <li className="block border-b-2 border-gray-500 px-4 py-2">
+                          <li>
+                            {sessionData && <p>{sessionData.user?.name}</p>}
+                            {sessionData && <p>{sessionData.user?.email}</p>}
+                          </li>
+                        </li>
+                        <li className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                          <li>
+                            <button
+                              onClick={() => {
+                                buyCredits().catch(console.error);
+                              }}
+                            >
+                              Buy Credits
+                            </button>
+                          </li>
+                        </li>
+                        <li className="block px-4 py-2 text-red-500 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-red-200">
+                          <button
+                            onClick={() => {
+                              signOut().catch(console.error);
+                            }}
+                          >
+                            Logout
+                          </button>
+                        </li>
+                        {/* <li className="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                          <button
+                            className="text-red-500"
+                            onClick={() => {
+                              signOut().catch(console.error);
+                            }}
+                          >
+                            Delete Account
+                          </button>
+                        </li> */}
+                      </ul>
+                    </div>
+                  ) : null}
                 </div>
               </>
             )}
             {!isLoggedIn && (
-              <li
-                onClick={() => setIsOpen(false)}
-                className={isOpen ? `pt-4` : ""}
-              >
+              <li className={isOpen ? `pt-4` : ""}>
                 <Button
                   onClick={() => {
                     signIn().catch(console.error);
@@ -130,23 +182,6 @@ export function Header() {
             onClick={() => setIsOpen(!isOpen)}
             className="relative z-20 block  lg:absolute lg:hidden"
           >
-            {/* <div
-            className={`absolute left-1/2 h-0.5 w-8 -translate-x-1/2 transform rounded-full bg-white transition-transform duration-200 ease-in-out ${
-              isOpen ? "top-1/2 rotate-45" : "top-1"
-            }`}
-          ></div>
-          <div
-            className={`absolute left-1/2 h-0.5 w-6 -translate-x-1/2 transform rounded-full bg-white transition-opacity duration-200 ease-in-out ${
-              isOpen ? "top-1/2 opacity-0" : "top-2.5"
-            }`}
-            ></div>
-            <div
-            className={`absolute left-1/2 h-0.5 w-8 -translate-x-1/2 transform rounded-full bg-white transition-transform duration-200 ease-in-out ${
-              isOpen ? "top-1/2 -rotate-45" : "top-4"
-            }`}
-            >
-            
-          </div> */}
             <RiMenu3Line className="text-3xl" />
           </button>
 

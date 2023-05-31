@@ -19,8 +19,13 @@ export function Button(
         colour
       )}
     >
-      {props.isLoading && <Spinner />}
       {props.children}
+      {props.isLoading && (
+        <>
+          ...please wait. This may take 10-15 seconds
+          <Spinner />
+        </>
+      )}
     </button>
   );
 }
