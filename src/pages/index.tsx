@@ -20,7 +20,7 @@ function HeroBanner() {
             {sessionData && <span>Kia Ora {sessionData.user?.name}!</span>}
           </h1>
           <h1 className="text-4xl font-bold lg:text-6xl ">
-            Generate logos using AI at the click of a button!
+            Use AI to generate logos at the click of a button!
           </h1>
           <p className="mt-8 text-xl font-medium lg:text-2xl">
             Don&apos;t wait for a designer to make a logo, generate one now by
@@ -28,7 +28,7 @@ function HeroBanner() {
           </p>
           <PrimaryLinkButton
             href="/generate"
-            className="mt-12 text-center font-medium md:w-3/5 md:self-center"
+            className="mt-12 text-center font-medium md:w-3/5 md:self-start"
           >
             GET STARTED
           </PrimaryLinkButton>
