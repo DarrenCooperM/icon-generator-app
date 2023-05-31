@@ -3,19 +3,18 @@ import Head from "next/head";
 import Image from "next/image";
 import { useState } from "react";
 import { Button } from "~/component/Button";
-import { FormGroup } from "~/component/FormGroup";
-import { Input } from "~/component/Input";
 import { api } from "~/utils/api";
 import { FiDownload } from "react-icons/fi";
-import { Company } from "~/component/GenerateInputs/Company";
-import { Business } from "~/component/GenerateInputs/Business";
-import { Colour } from "~/component/GenerateInputs/Colour";
-import { Shape } from "~/component/GenerateInputs/Shape";
-import { Logo } from "~/component/GenerateInputs/Logo";
-import { AbstractLiteral } from "~/component/GenerateInputs/AbstractLiteral";
-import { Imagery } from "~/component/GenerateInputs/Imagery";
-import { Theme } from "~/component/GenerateInputs/Theme";
-import { NumberOfLogos } from "~/component/GenerateInputs/NumberOfLogos";
+
+import { Company } from "../component/GenerateInputs/Company";
+import { Business } from "../component/GenerateInputs/Business";
+import { Colour } from "../component/GenerateInputs/Colour";
+import { Shape } from "../component/GenerateInputs/Shape";
+import { Logo } from "../component/GenerateInputs/Logo";
+import { AbstractLiteral } from "../component/GenerateInputs/AbstractLiteral";
+import { Imagery } from "../component/GenerateInputs/Imagery";
+import { Theme } from "../component/GenerateInputs/Theme";
+import { NumberOfLogos } from "../component/GenerateInputs/NumberOfLogos";
 
 const GeneratePage: NextPage = () => {
   const [form, setForm] = useState({
