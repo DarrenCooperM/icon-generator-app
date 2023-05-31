@@ -51,7 +51,7 @@ export function Header() {
     <header
       className={`${
         !isOpen
-          ? "sticky top-0 z-50 w-full bg-gray-200 shadow-md dark:bg-gray-800"
+          ? "sticky top-0 z-50 w-full bg-gray-200 shadow-md dark:bg-gray-900"
           : ""
       }`}
     >

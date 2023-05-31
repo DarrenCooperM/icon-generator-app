@@ -28,7 +28,7 @@ function HeroBanner() {
           </p>
           <PrimaryLinkButton
             href="/generate"
-            className="mt-12 text-center font-medium md:w-3/5 md:self-start"
+            className="mt-12 text-center font-medium md:w-3/5 md:self-center"
           >
             GET STARTED
           </PrimaryLinkButton>

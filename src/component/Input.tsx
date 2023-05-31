@@ -3,7 +3,7 @@ export function Input(props: React.ComponentPropsWithRef<"input">) {
     <input
       {...props}
       type="text"
-      className="rounded border border-gray-800 px-4 py-2 dark:text-gray-800"
+      className="rounded border border-black bg-transparent px-4 py-2 text-black dark:border-gray-100  dark:text-white"
     />
   );
 }
