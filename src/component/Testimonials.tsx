@@ -20,7 +20,7 @@ export function Testimonials() {
               />
             </svg>
             <blockquote>
-              <p className="text-2xl font-medium text-gray-900 dark:text-white">
+              <p className="text-xl font-medium text-gray-900 dark:text-white md:text-2xl">
                 &quot;This website is awesome! So easy to use and so handy! I
                 can generate so many different designs that I can work with to
                 get my ideas flowing.&quot;
