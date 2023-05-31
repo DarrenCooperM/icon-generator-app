@@ -1,18 +1,10 @@
-import Image from "next/image";
-
-const time = "/time.jpg";
+import { GiSandsOfTime } from "@react-icons/all-files/gi/GiSandsOfTime";
 
 export function GeneralInfo() {
   return (
     <>
       <div className="mx-4 mb-12 max-w-screen-xl sm:mx-auto md:pb-24 md:pt-12">
-        <Image
-          src={time}
-          alt="time"
-          width={100}
-          height={100}
-          className="mx-auto h-20 w-20 rounded-xl text-gray-400 dark:text-gray-600 "
-        />
+        <GiSandsOfTime className="mx-auto h-20 w-20 rounded-xl" />
         <div className="flex flex-col items-center justify-center gap-10 rounded-lg text-center">
           <p className="mt-8 text-4xl font-medium capitalize md:text-6xl">
             Let us save your time!
