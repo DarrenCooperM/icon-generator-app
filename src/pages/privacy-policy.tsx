@@ -8,42 +8,70 @@ const PrivacyPolicy: NextPage = () => {
           THIS APP IS PURELY TO SHOWCASE FOR MY INTERVIEWS. With that said,
           here&apos;s some basic terms and conditions
         </p>
-        <h1>Privacy Policy</h1>&quot;
+        <h1>Privacy Policy</h1>
         <p>Last Updated: 31/05/2023</p>
+
         <h2>1. Introduction</h2>
         <p>
-          Welcome to logo-generator.maoriwebdev.com. This policy describes how
-          we collect, use, and handle your information when you use our
-          services.
+          Logo Generator (&quot;we&quot;, &quot;us&quot;, or &quot;our&quot;)
+          operates the logo-generator.maoriwebdev.com website (the
+          &quot;Service&quot;). This page informs you of our policies regarding
+          the collection, use, and disclosure of personal data when you use our
+          Service and the choices you have associated with that data.
         </p>
+
         <h2>2. Information We Collect</h2>
         <p>
-          When you register for our service, we collect the information you
-          provide us, such as your Google credentials. When you use our
-          services, we also collect information about how you interact with our
-          services.
+          While using our Service, we may ask you to provide us with certain
+          personally identifiable information that can be used to contact or
+          identify you (&quot;Personal Data&quot;). Personally identifiable
+          information may include, but is not limited to: Email address, First
+          name and last name, Usage data.
         </p>
-        <h2>3. Use of Information</h2>
+
+        <h2>3. Use of Data</h2>
         <p>
-          We use this information to provide and improve our services, for
-          example, to generate logos as per your request.
+          We use the collected data for various purposes: To provide and
+          maintain the Service To notify you about changes to our Service To
+          provide customer care and support To provide analysis or valuable
+          information so that we can improve the Service To monitor the usage of
+          the Service To detect, prevent and address technical issues
         </p>
-        <h2>4. Sharing of Information</h2>
+
+        <h2>4. Transfer Of Data</h2>
         <p>
-          We do not share your personal information with third parties without
-          your consent, except to comply with the law or to protect the rights,
-          property, or safety of us, our users, or others.
+          Your information, including Personal Data, may be transferred to — and
+          maintained on — computers located outside of your state, province,
+          country or other governmental jurisdiction where the data protection
+          laws may differ than those from your jurisdiction.
         </p>
-        <h2>5. Data Security</h2>
+
+        <h2>5. Disclosure Of Data</h2>
         <p>
-          We take the security of your data very seriously and implement
-          reasonable and appropriate security measures to protect it.
+          We may disclose your Personal Data in the good faith belief that such
+          action is necessary to: To comply with a legal obligation To protect
+          and defend the rights or property of logo-generator.maoriwebdev.com To
+          prevent or investigate possible wrongdoing in connection with the
+          Service To protect the personal safety of users of the Service or the
+          public To protect against legal liability
         </p>
-        <h2>6. Changes to This Policy</h2>
+
+        <h2>6. Security Of Data</h2>
         <p>
-          We may update this Privacy Policy from time to time. We will notify
-          you of any changes by updating the &quot;last updated&quot; date of
-          this Privacy Policy.
+          The security of your data is important to us, but remember that no
+          method of transmission over the Internet, or method of electronic
+          storage is 100% secure. While we strive to use commercially acceptable
+          means to protect your Personal Data, we cannot guarantee its absolute
+          security.
+        </p>
+
+        <h2>7. Changes to This Policy</h2>
+        <p>
+          We may update our Privacy Policy from time to time. We will notify you
+          of any changes by posting the new Privacy Policy on this page. We will
+          let you know via email and/or a prominent notice on our Service, prior
+          to the change becoming effective and update the &quot;effective
+          date&quot; at the top of this Privacy Policy.
         </p>
       </div>
     </main>
