@@ -3,5 +3,9 @@
 @tailwind utilities;
 
 body {
-  @apply bg-gray-200 dark:bg-gray-800 dark:text-gray-100;
+  @apply bg-gray-200 dark:bg-gray-900 dark:text-gray-100;
+}
+
+.custom-img {
+  background-image: url("https://images.unsplash.com/photo-1597589827703-f4b68eafa0ce?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1544&q=80");
 }

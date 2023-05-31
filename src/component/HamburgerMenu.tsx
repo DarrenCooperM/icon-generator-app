@@ -110,7 +110,7 @@ export function HamburgerMenu({ isOpen, setIsOpen }: HamburgerMenuProps) {
                   Logout
                 </Button>
               </li>
-              <div className="flex items-center font-medium text-blue-800">
+              <div className="flex items-center text-xl">
                 Credits remaining:&nbsp;
                 <span>{credits.data || <Spinner />}</span>
               </div>
