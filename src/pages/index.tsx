@@ -20,7 +20,7 @@ function HeroBanner() {
             {sessionData && <span>Kia Ora {sessionData.user?.name}!</span>}
           </h1>
           <h1 className="text-4xl font-bold lg:text-6xl ">
-            Use AI to generate logos at the click of a button!
+            Generate logos using AI at the click of a button!
           </h1>
           <p className="mt-8 text-xl font-medium lg:text-2xl">
             Don&apos;t wait for a designer to make a logo, generate one now by
