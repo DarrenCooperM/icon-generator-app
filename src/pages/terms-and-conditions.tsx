@@ -5,9 +5,12 @@ const TermsAndConditionsPage: NextPage = () => {
     <>
       <main className="container mx-auto mb-20 mt-12 md:mt-32">
         <div className="mx-4 flex flex-col gap-6 text-left">
+          <p className="font-bold">
+            THIS APP IS PURELY TO SHOWCASE FOR MY INTERVIEWS. With that said,
+            here&apos;s some basic terms and conditions
+          </p>
           <h1>Terms and Conditions</h1>
           <p>Last Updated: 31/05/2023</p>
-
           <h2>1. Introduction</h2>
           <p>
             Welcome to logo-generator.maoriwebdev.com, a Next.js application
@@ -15,31 +18,27 @@ const TermsAndConditionsPage: NextPage = () => {
             Conditions govern your use of our service, and by using our service,
             you agree to these terms.
           </p>
-
           <h2>2. Account Registration</h2>
           <p>
             To use our service, you must register an account using your Google
             credentials. You are responsible for keeping your login information
             secure.
           </p>
-
           <h2>3. OpenAI Use</h2>
           <p>
             Our service generates logos using OpenAI. By using our service, you
             agree to the terms and conditions of OpenAI.
           </p>
-
           <h2>4. Payments</h2>
           <p>
             We use Stripe for payment processing. By making a payment, you agree
             to their Terms and Conditions and Privacy Policy.
           </p>
-
           <h2>5. Changes to These Terms</h2>
           <p>
             We reserve the right to change these Terms and Conditions at any
-            time. We will notify you of any changes by updating the "last
-            updated" date of these Terms and Conditions.
+            time. We will notify you of any changes by updating the &quot;last
+            updated&quot; date of these Terms and Conditions.
           </p>
         </div>
       </main>
