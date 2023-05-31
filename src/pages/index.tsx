@@ -23,7 +23,7 @@ function HeroBanner() {
             Use AI to generate logos at the click of a button!
           </h1>
           <p className="mt-8 text-xl lg:text-2xl">
-            Don't wait for a designer to make a logo, generate one now by
+            Don&apos;t wait for a designer to make a logo, generate one now by
             clicking the &apos;Get Started&apos; button below!
           </p>
           <PrimaryLinkButton
