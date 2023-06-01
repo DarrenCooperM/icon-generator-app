@@ -1,5 +1,5 @@
 import { type NextPage } from "next";
-import { useSession } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 import Head from "next/head";
 import Image from "next/image";
 import { Body } from "~/component/Body";
@@ -26,12 +26,23 @@ function HeroBanner() {
             Don&apos;t wait for a designer to make a logo, generate one now by
             clicking the &apos;Get Started&apos; button below!
           </p>
-          <PrimaryLinkButton
-            href="/generate"
-            className="mt-12 text-center font-medium md:w-3/5 md:self-center"
-          >
-            GET STARTED
-          </PrimaryLinkButton>
+          {sessionData ? (
+            <PrimaryLinkButton
+              href="/generate"
+              className="mt-12 text-center font-medium md:w-3/5 md:self-center"
+            >
+              GET STARTED
+            </PrimaryLinkButton>
+          ) : (
+            <button
+              onClick={() => {
+                signIn().catch(console.error);
+              }}
+              className="mt-12 rounded bg-blue-900 px-4 py-2 text-center font-medium ease-in-out hover:bg-blue-600 hover:transition-colors md:w-3/5 md:self-center"
+            >
+              GET STARTED
+            </button>
+          )}
         </div>
         <div className=" grid items-center md:m-0 xl:ml-12 xl:items-start">
           <Image

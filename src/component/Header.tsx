@@ -109,8 +109,8 @@ export function Header() {
                     {sessionData?.user?.image && (
                       <Image
                         src={sessionData.user.image || blankProfileImg}
-                        width={50}
-                        height={50}
+                        width={45}
+                        height={45}
                         alt="profileimg"
                         className="relative cursor-pointer rounded-full"
                         onClick={handleDrop}

@@ -1,6 +1,9 @@
 import { GiSandsOfTime } from "@react-icons/all-files/gi/GiSandsOfTime";
+import { signIn, useSession } from "next-auth/react";
+import { PrimaryLinkButton } from "./PrimaryLinkButton";
 
 export function GeneralInfo() {
+  const { data: sessionData } = useSession();
   return (
     <>
       <div className="mx-4 mb-12 max-w-screen-xl sm:mx-auto md:pb-24 md:pt-12">
@@ -15,6 +18,23 @@ export function GeneralInfo() {
             unique description of your desired logos, we can swiftly produce
             your assets within a matter of seconds.
           </p>
+          {sessionData ? (
+            <PrimaryLinkButton
+              href="/generate"
+              className="mt-12 text-center font-medium md:w-1/4 md:self-center"
+            >
+              Generate Logos now!
+            </PrimaryLinkButton>
+          ) : (
+            <button
+              onClick={() => {
+                signIn().catch(console.error);
+              }}
+              className="mt-12 rounded bg-blue-900 px-4 py-2 text-center font-medium ease-in-out hover:bg-blue-600 hover:transition-colors md:w-1/4 md:self-center"
+            >
+              GET STARTED
+            </button>
+          )}
         </div>
       </div>
     </>

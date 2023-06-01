@@ -1,4 +1,5 @@
 import { type NextPage } from "next";
+import { signIn, useSession } from "next-auth/react";
 import Head from "next/head";
 import Image from "next/image";
 import { useState } from "react";
@@ -9,17 +10,18 @@ import { FormGroup } from "~/component/FormGroup";
 import { Input } from "~/component/Input";
 
 const colours = [
-  "blue",
-  "red",
-  "orange",
-  "purple",
-  "yellow",
-  "pink",
-  "green",
-  "teal",
-  "grey",
-  "black",
-  "light green",
+  { name: "blue", image: "/Colours/blue.jpg" },
+  { name: "red", image: "/Colours/red.jpg" },
+  { name: "green", image: "/Colours/green.jpg" },
+  { name: "purple", image: "/Colours/purple.jpg" },
+  { name: "orange", image: "/Colours/orange.jpg" },
+  { name: "lightGreen", image: "/Colours/lightGreen.jpg" },
+  { name: "pink", image: "/Colours/pink.jpg" },
+  { name: "yellow", image: "/Colours/yellow.jpg" },
+  { name: "black", image: "/Colours/black.jpg" },
+  { name: "white", image: "/Colours/white.jpg" },
+  { name: "teal", image: "/Colours/teal.jpg" },
+  { name: "grey", image: "/Colours/grey.jpg" },
 ];
 
 const shapes = ["square", "circle", "rounded"];
@@ -38,6 +40,8 @@ const styles = [
 ];
 
 const GeneratePage: NextPage = () => {
+  const { data: sessionData } = useSession();
+  // Define the state for the form, error message, and image URLs
   const [form, setForm] = useState({
     prompt: "",
     company: "",
@@ -51,7 +55,7 @@ const GeneratePage: NextPage = () => {
   });
   const [error, setError] = useState("");
   const [imagesUrl, setImagesUrl] = useState<{ imageUrl: string }[]>([]);
-
+  // Define the mutation to generate an icon
   const generateIcon = api.generate.generateIcon.useMutation({
     onSuccess(data) {
       setImagesUrl(data);
@@ -61,6 +65,7 @@ const GeneratePage: NextPage = () => {
     },
   });
 
+  // Define a function to handle form submission
   function handleFormSubmit(e: React.FormEvent) {
     e.preventDefault();
     setError("");
@@ -70,6 +75,7 @@ const GeneratePage: NextPage = () => {
     });
   }
 
+  // Define a function to update form values
   function updateForm(key: string) {
     return function (e: React.ChangeEvent<HTMLInputElement>) {
       setForm((prev) => ({
@@ -79,6 +85,7 @@ const GeneratePage: NextPage = () => {
     };
   }
 
+  // Define a function to handle downloading of images
   function handleDownload(imageUrl: string) {
     const link = document.createElement("a");
     link.href = imageUrl;
@@ -87,7 +94,6 @@ const GeneratePage: NextPage = () => {
     link.click();
     document.body.removeChild(link);
   }
-
   return (
     <>
       <Head>
@@ -96,7 +102,9 @@ const GeneratePage: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="container mx-auto mb-16 mt-12 flex min-h-screen flex-col gap-4 px-8 lg:mt-24">
-        <h1 className="text-4xl lg:text-6xl">Generate your Logos</h1>
+        <h1 className="mb-8 flex justify-center text-4xl font-medium lg:text-6xl">
+          Generate your Logos
+        </h1>
         <p className="mb-12 text-xl lg:text-2xl">
           Fill out the form below to start generating your logos.
         </p>
@@ -106,7 +114,7 @@ const GeneratePage: NextPage = () => {
           </h2>
           <FormGroup className="mb-12">
             <Input
-              placeholder="e.g. Acme Corp"
+              placeholder="e.g. Spark, Air New Zealand"
               required
               value={form.company}
               onChange={updateForm("company")}
@@ -128,20 +136,23 @@ const GeneratePage: NextPage = () => {
           <h2 className=" text-xl lg:text-2xl">
             3. Pick a primary color for your logo.
           </h2>
-          <FormGroup className="mb-12 grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
+          <FormGroup className="mb-12 grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-12">
             {colours.map((colour) => (
-              <label
-                key={colour}
-                className="flex items-center gap-2  text-xl sm:text-xl md:mb-0 md:text-xl lg:text-2xl"
-              >
-                <input
-                  required
-                  type="radio"
-                  name="colour"
-                  checked={colour === form.colour}
-                  onChange={() => setForm((prev) => ({ ...prev, colour }))}
-                ></input>
-                {colour}
+              <label key={colour.name} className="flex items-center">
+                <Image
+                  width={100}
+                  height={100}
+                  src={colour.image}
+                  alt={colour.name}
+                  className={`h-24 w-24 rounded-lg border-4 md:h-20 md:w-20 ${
+                    colour.name === form.colour
+                      ? "border-blue-500"
+                      : "border-transparent"
+                  }`}
+                  onClick={() =>
+                    setForm((prev) => ({ ...prev, colour: colour.name }))
+                  }
+                />
               </label>
             ))}
           </FormGroup>
@@ -242,12 +253,23 @@ const GeneratePage: NextPage = () => {
               {error}
             </div>
           )}
-          <Button
-            isLoading={generateIcon.isLoading}
-            disabled={generateIcon.isLoading}
-          >
-            Generate
-          </Button>
+          {sessionData ? (
+            <Button
+              isLoading={generateIcon.isLoading}
+              disabled={generateIcon.isLoading}
+            >
+              Generate Logo
+            </Button>
+          ) : (
+            <button
+              onClick={() => {
+                signIn().catch(console.error);
+              }}
+              className="rounded bg-blue-900 px-4 py-2 text-center font-medium ease-in-out hover:bg-blue-600 hover:transition-colors md:w-full md:self-center"
+            >
+              Log in to start
+            </button>
+          )}
         </form>
 
         {imagesUrl.length > 0 && (
