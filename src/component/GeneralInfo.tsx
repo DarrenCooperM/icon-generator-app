@@ -32,7 +32,7 @@ export function GeneralInfo() {
               }}
               className="uppercase mt-12 rounded bg-blue-900 px-4 py-2 text-center font-medium ease-in-out hover:bg-blue-600 hover:transition-colors md:w-1/4 md:self-center text-white"
             >
-              get started
+              get started 
             </button>
           )}
         </div>
